@@ -13,7 +13,7 @@ import androidx.media3.common.Metadata
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
 
 /** Estado de audio compartido entre el servicio y la pantalla de ajustes (mismo proceso). */
 object AudioFx {
@@ -39,7 +39,7 @@ object AudioFx {
         applyMode(ctx)
     }
 
-    @Volatile var player: Player? = null
+    @Volatile var player: ExoPlayer? = null
     @Volatile var sleepEnd = 0L
     private val handler = Handler(Looper.getMainLooper())
     private val sleepTask = Runnable { player?.pause(); sleepEnd = 0L }
